@@ -1,4 +1,5 @@
 # WinRM-Reverse-Shell
++ Works on Windows 10/11
 
 # Own Pass And Name
 Go to `WinRM.ps1` and edit 
