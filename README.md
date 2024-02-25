@@ -14,7 +14,9 @@ Use this command
 # ![Screenshot_2024-02-25_13-40-13 (1)](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/446782ec-8fcf-46ac-adf1-10f54711bf73)
 
 # Rubber Ducky payload
-
+### The payload is in this repo aswel 
++ Edit your own speed of the payload
++ You can change to URL to your own 
 
 # Script into pieces
 ## Create a new local user account
