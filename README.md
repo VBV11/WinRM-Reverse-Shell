@@ -18,6 +18,12 @@ Use this command
 + Edit your own speed of the payload
 + You can change to URL to your own 
 
+
+
+https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/fa37438d-69cc-4969-8866-dc02a3437dec
+
+
+
 # Script into pieces
 ## Function to hide a window
 function Hide-Window {
