@@ -1,5 +1,6 @@
 # WinRM-Reverse-Shell
 + Works on Windows 10/11
++ Needs To be connected to the same internet
 
 # Own Pass And Name
 Go to `WinRM.ps1` and edit 
