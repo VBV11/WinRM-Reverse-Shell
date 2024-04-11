@@ -1,4 +1,4 @@
-# WinRM Reverse Shell
+# Win-RM Reverse Shell
 
 ## Introduction
 This repository provides a PowerShell script to establish a reverse shell connection via Windows Remote Management (WinRM) on Windows 10/11. Additionally it includes a Rubber Ducky payload for alternative deployment.
