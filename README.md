@@ -1,6 +1,8 @@
 # WinRM-Reverse-Shell
+
+# Dependencies
 + Works on Windows 10/11
-+ Needs To be connected to the same internet
++ For the attacker and victim to establish a connection via Evil-WinRM they must be on the same network.
 
 # Own Pass And Name
 Go to `WinRM.ps1` and edit 
@@ -24,6 +26,16 @@ Use this command
 
 https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/fa37438d-69cc-4969-8866-dc02a3437dec
 
+
+
+# You can see the Acount in User Accounts
++ In the run box u can type netplwiz and then u can see the Acount
++ Also u may see it in the login screen but that doesnt happen by me 
+
+![image](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/8ee30db3-aee3-4720-9d75-228fd26a6aec)
+
+
+![image](https://github.com/VBV11/WinRM-Reverse-Shell/assets/104235290/2d0a0ada-3810-4cc3-9e8a-338c4ef3079d)
 
 
 # Script into pieces
