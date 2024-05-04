@@ -1,6 +1,3 @@
-# Hide the current PowerShell window
-Hide-Window
-
 # Create a new local user account
 $Username = "Admin"
 $Password = ConvertTo-SecureString "Password1" -AsPlainText -Force
