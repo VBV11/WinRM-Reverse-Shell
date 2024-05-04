@@ -1,24 +1,3 @@
-# Function to hide a window
-function Hide-Window {
-    param(
-        [IntPtr]$Handle = (Get-Process -PID $PID).MainWindowHandle
-    )
-    Add-Type @"
-    using System;
-    using System.Runtime.InteropServices;
-
-    public class Window {
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr GetConsoleWindow();
-    }
-"@
-    [void][Window]::ShowWindow($Handle, 0)
-}
-
 # Hide the current PowerShell window
 Hide-Window
 
