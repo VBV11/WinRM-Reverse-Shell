@@ -7,6 +7,9 @@
 ## Introduction
 This repository provides a PowerShell script to establish a reverse shell connection via Windows Remote Management (WinRM) on Windows 10/11. Additionally it includes a Rubber Ducky payload for alternative deployment.
 
+## Update
+I removed the hide windows function triggering the AV alert.
+
 ## Dependencies
 - Both attacker and victim must be on the same network for the connection to be established successfully.
 - Ensure you have administrative access to the target machine.
@@ -44,7 +47,6 @@ To view the account, type netplwiz in the Run box.
 ## Script Breakdown
 ### The PowerShell script is divided into several parts:
 
-#### Function to hide a window.
 #### Creation of a new local user account.
 #### Addition of the new user to the local Administrators group.
 #### Enabling of Windows Remote Management (WinRM).
